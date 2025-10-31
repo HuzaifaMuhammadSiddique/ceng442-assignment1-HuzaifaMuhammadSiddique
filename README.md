@@ -207,10 +207,15 @@ The way the directory was organized is as follows:
 
 main_folder/
 │
+
 ├── main_pipeline.py # Data cleaning & corpus creation
+
 ├── train_embeddings.py #  Word2Vec / FastText training
+
 ├── compare_embeddings.py #  Evaluation & comparison
+
 ├── embeddings/ # Saved .model files
+
 └── corpus_all.txt # Combined domain-tagged corpus
 
 The input excel files and the output excel files were directly loaded/created into the main_folder.
@@ -265,5 +270,6 @@ FastText, on the other hand, did not add much advantage in coverage because most
 - Optionally experiment with contextual embeddings like BERT or multilingual transformers to compare static vs. contextualized vector representations.
 
 In summary, the Word2Vec model performed slightly better for this cleaned Azerbaijani datasets due to its strong semantic grouping, while the FastText embedding model did offer robustness to subword variation but less semantic clarity. The pipeline remains fully extensible for deeper morphological and domain-specific exploration.
+
 
 
