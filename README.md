@@ -206,6 +206,7 @@ It is important to note that this project does not depend on any OS-specific pat
 The way the directory was organized is as follows:
 
 main_folder/
+
 │
 
 ├── main_pipeline.py # Data cleaning & corpus creation
@@ -270,6 +271,7 @@ FastText, on the other hand, did not add much advantage in coverage because most
 - Optionally experiment with contextual embeddings like BERT or multilingual transformers to compare static vs. contextualized vector representations.
 
 In summary, the Word2Vec model performed slightly better for this cleaned Azerbaijani datasets due to its strong semantic grouping, while the FastText embedding model did offer robustness to subword variation but less semantic clarity. The pipeline remains fully extensible for deeper morphological and domain-specific exploration.
+
 
 
 
