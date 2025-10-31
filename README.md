@@ -1,5 +1,5 @@
 Group members:
-- Huzaifa Muhammad Siddique
+- Huzaifa Muhammad Siddique (22050141041)
 
 Azerbaijani Text Preprocessing and Word Embeddings (CENG 442 – Assignment 1)
 
@@ -271,6 +271,7 @@ FastText, on the other hand, did not add much advantage in coverage because most
 - Optionally experiment with contextual embeddings like BERT or multilingual transformers to compare static vs. contextualized vector representations.
 
 In summary, the Word2Vec model performed slightly better for this cleaned Azerbaijani datasets due to its strong semantic grouping, while the FastText embedding model did offer robustness to subword variation but less semantic clarity. The pipeline remains fully extensible for deeper morphological and domain-specific exploration.
+
 
 
 
