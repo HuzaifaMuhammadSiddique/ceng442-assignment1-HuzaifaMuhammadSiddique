@@ -1,0 +1,6 @@
+pandas
+gensim
+openpyx
+regex
+ftfy
+scikit-learn
