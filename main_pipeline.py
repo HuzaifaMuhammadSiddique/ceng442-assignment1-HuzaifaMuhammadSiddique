@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
+
 """
 CENG 442 - Assignment 1: Azerbaijani Text Preprocessing + Word Embeddings
-Sections 7–9: Full pipeline code.
+Sections 7: Full pipeline code.
 """
 
 import re, html, unicodedata
@@ -242,3 +242,4 @@ if __name__ == "__main__":
 
     # Combined corpus
     build_corpus_txt([c[0] for c in CFG], [c[1] for c in CFG], out_txt="corpus_all.txt")
+
