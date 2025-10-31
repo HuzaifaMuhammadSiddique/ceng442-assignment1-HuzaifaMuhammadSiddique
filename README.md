@@ -1,9 +1,9 @@
 Group members:
 - Huzaifa Muhammad Siddique (22050141041)
 
-Azerbaijani Text Preprocessing and Word Embeddings (CENG 442 – Assignment 1)
+**Azerbaijani Text Preprocessing and Word Embeddings (CENG 442 – Assignment 1)**
 
-1) Data & Goal
+**1) Data & Goal**
 This homework project focused on the cleaning, pre-processing, and preparing of five datasets in the Azerbaijani language. The NLP task that was to be performed on these datasets was sentiment analysis. The goal was to normalize and merge these datasets, build a domain-aware combined corpus, and train both Word2Vec and FastText embeddings on the cleaned text.
 
 Datasets
@@ -23,8 +23,7 @@ The neutral value (0.5) was used to represent intermediate sentiment polarity, w
 
 
 
-
-2) Preprocessing
+**2) Preprocessing**
 
 All of the datasets that we had were cleaned and preprocessed using an Azerbaijani-aware normalization pipeline. Here is a one-paragraph summary of all of the rules that were applied:
 Azerbaijani letters like 'İ' and 'I' were converted to lowercase. So 'İ' became 'i' and  'I' became 'ı'. Many replacements were made. So the word 'İctimai' would become 'ictimai'. And the word 'QABIL' became 'qabıl'.  Like all of the URLs were replaced with the exact text 'URL'. For example a URL like 'https://aybuzem.aybu.edu.tr/' would be changed to just the text 'URL'. Emails were also replaced with the exact text 'EMAIL'. So for example the email '22050141041@aybu.edu.tr' became 'EMAIL'. Phone numbers were also replaced. For phone numbers, the text 'PHONE' was used. For example if we had the phone number '0500-123-45-67' it would simply be replaced with 'PHONE'. Furthermore, mentions like @huzaifa123 were replaced with the text 'USER'. Numbers were replaced with the exact text '<NUM>'. So the text '1975 amerkalılar gör necə avam olublar gəlsin burda satsın görüm o daşı' became '<NUM> amerkalılar gör necə avam olublar gəlsin burda satsın görüm o daşı'. HTML tags like '\<div\>' were also removed. Redundant punctuations were also excluded. We also collapsed repeated characters for example the word 'çooooox' became 'çox'. So if in a word, a character was repeated three or more times, it was reduced to two. We also went forward to deasciify common forms like converting 'cox' to 'çox'. Hashtag splitting was also performed. So the hashtag '#QarabagIsBack' became 'qarabag is back'. Azerbaijani letters were not removed. We also removed single-letter tokens like 'a' or 'l'. The single-letter tokens 'o' and 'e' were not removed because they have a specific meaning in the Azerbaijani language. Most importantly, duplicate and empty rows were removed. Extra spaces were also removed.
@@ -35,13 +34,7 @@ The first column was `cleaned_text` (normalized string) and the second column wa
 
 
 
-
-
-
-
-
-3) Mini Challenges
-
+**3) Mini Challenges**
 
 All of the following Mini Challenges were implemented: 
 1. Hashtag splitting was performed. So '#QarabagIsBack' was converted to 'qarabag is back'. We used a regular expression to remove the `#` symbol and we splitted camelCase hashtags into readable tokens. The main observation for this is that it improved the tokenization of social media texts, allowing multi-word hashtags to contribute meaningful words to embeddings (e.g., “qarabag” and “back” instead of a single combined token).
@@ -51,20 +44,13 @@ All of the following Mini Challenges were implemented:
 3. Stopword Research was also performed. The following Azerbaijani words were proposed and included in the  stopwords list: "və","ilə","amma","ancaq","lakin","ya","həm","ki","bu","bir","o","biz","siz","mən" ,"sən","orada","burada","bütün","hər","artıq","çox","az","ən","də","da","üçün".
 For the implementation, an Azerbaijani stopword list was compared with a Turkish list. Many potential stopword candidates were identified , but negators such as `yox`, `deyil`, `heç`, `qətiyyən`, and `yoxdur` were intentionally kept. By default, stopword removal was kept optional because excessive filtering reduced sentiment-bearing words. However, this comparison helped highlight the overlap between Azerbaijani and Turkish function words.
 
-
-
 4. Negation Scope was also implemented. Negators like 'yox', 'deyil', 'heç', 'qətiyyən' and'yoxdur' marked the next 3 tokens with `_NEG` e.g., deyil yaxşı film became  deyil yaxşı_NEG film_NEG. For the implementation part, the model detected these negator words marked the next three tokens with a `_NEG` suffix. And we can observe that  this improved the model’s ability to capture sentiment reversals. For example, embeddings of “yaxşı_NEG” diverged from “yaxşı”, making negative contexts more distinguishable in the vector space.
-
-
-
 
 5. Deasciification of the text was performed. Common ASCII forms were corrected. For example, cox became çox and 'yaxsi' became 'yaxşı'. For the purposes of implementation, a  dictionary named 'SLANG_MAP' was used that converted ASCII-based forms to their Azerbaijani equivalents. This ultimately corrected common social media spelling variations and reduced vocabulary fragmentation, and also ensured that semantically identical words were mapped to the same embedding vector.
 
 
 
-
-
-4) Domain-Aware Features
+**4) Domain-Aware Features**
 
 The text was classified under which domain each of the texts falls. Four domains were taken under consideration: 'news', 'social', 'reviews' and 'general'. Domain was detected using some rules, then domain-specific normalization was applied and all of the text was combined in a text file with the domain labels. 
 The main purpose to implement domain awareness was to find out the stylistic differences between texts.
@@ -102,11 +88,7 @@ Finally, the cleaned sentences were exported into a single text corpus named 'co
 
 
 
-
-
-
-
-5) Embeddings
+**5) Embeddings**
 
 We trained two embedding models named 'Word2Vec' and 'FastText' on the combined, domain-tagged Azerbaijani corpus ('corpus_all.txt'). The main goal was to learn distributed word representations capable of capturing semantic and sentiment relationships across multiple domains (news, reviews, social media). The corpus contained over 120,000 cleaned sentences.
 
@@ -167,7 +149,6 @@ We have  also analyzed the similarities for synonyms and antonyms. Here is the s
 Observation: We can clearly observe that the values for the FastText model are higher than the values for the WOrd2Vec model. This is mainly because the FastText model is sensitive to the subword morphology. Unexpectedly, the antonym similarity scores were higher than synonym scores, this likely happened due to sentiment words appearing in overlapping contexts for example both 'yaxşı' and 'pis' frequently co-occur with the same product or topic words. 
 
 
-
 --Nearest Neighbor Analysis--
 
 | Word   |                   Word2Vec Top Neighbors                    | FastText Top Neighbors |
@@ -185,14 +166,13 @@ In general, the FastText model showed stronger morphological generalization but 
 
 
 
-6) Lemmatization (Optional)
+**6) Lemmatization (Optional)**
 
 Lemmatization was not applied in this project. 
 
 
 
-
-7) Reproducibility
+**7) Reproducibility**
 
 In order to ensure that the preprocessing, embedding training, and evaluation steps can be reproduced on any machine, all code was developed and executed in a controlled Python environment. 
 The versions, execution order, and expected directory structure are listed below.
@@ -237,8 +217,7 @@ Here is an explanation of how you can set up the entire environment and run the 
 
 
 
-
-8) Conclusions
+**8) Conclusions**
 
 Both Word2Vec and FastText models successfully learned Azerbaijani word representations from the cleaned and domain-tagged corpus. However, their behavior differed in how they captured the meaning and morphology.
 
@@ -271,6 +250,7 @@ FastText, on the other hand, did not add much advantage in coverage because most
 - Optionally experiment with contextual embeddings like BERT or multilingual transformers to compare static vs. contextualized vector representations.
 
 In summary, the Word2Vec model performed slightly better for this cleaned Azerbaijani datasets due to its strong semantic grouping, while the FastText embedding model did offer robustness to subword variation but less semantic clarity. The pipeline remains fully extensible for deeper morphological and domain-specific exploration.
+
 
 
 
